@@ -179,34 +179,39 @@ const secretPw = process.env.SECRET_CODE;
 ### OS
 > 노드는 os모듈에 정보가 담겨 있어 정보를 가져올 수 있다.
 
-- os.arch(): process.arch와 동일합니다.
-- os.platform(): process.platform과 동일합니다.
-- os.type(): 운영체제의 종류를 보여줍니다.
-- os.uptime(): 운영체제 부팅 이후 흐른 시간(초)을 보여줍니다. process.uptime()은 노드의 실행 시간이었습니다.
-- os.hostname(): 컴퓨터의 이름을 보여줍니다.
-- os.release(): 운영체제의 버전을 보여줍니다.
-- os.homedir(): 홈 디렉터리 경로를 보여줍니다.
-- os.tmpdir(): 임시 파일 저장 경로를 보여줍니다.
-- os.cpus(): 컴퓨터의 코어 정보를 보여줍니다.
-- os.freemem(): 사용 가능한 메모리(RAM)를 보여줍니다.
-- os.totalmem(): 전체 메모리 용량을 보여줍니다.
-
 ### path
 > 폴더와 파일의 경로를 쉽게 조작하도록 도와주는 모듈. path 모듈이 필요한 이유 중 하나는 운영체제별로 경로 구분자가 다르기 때문입니다.
 
-- path.sep: 경로의 구분자다. 윈도는 \, POSIX는 /다
-- path.delimiter: 환경 변수의 구분자다. process.env.PATH를 입력하면 여러 개의 경로가 이 구분자로 구분되어있다. 윈도는 세미콜론(;)이고, POSIX는 콜론(:)
 - path.dirname(경로): 파일이 위치한 폴더 경로를 보여준다.
 - path.extname(경로): 파일의 확장자를 보여준다.
 - path.basename(경로, 확장자): 파일의 이름(확장자 포함)을 표시한다. 파일의 이름만 표시하고 싶다면 basename의 두 번째 인수로 파일의 확장자를 넣으면된다.
-- path.parse(경로): 파일 경로를 root, dir, base, ext, name으로 분리한다.
-- path.format(객체): path.parse()한 객체를 파일 경로로 합친다.
-- path.normalize(경로): /나 \를 실수로 여러 번 사용했거나 혼용했을 때 정상적인 경로로 변환한다.
-- path.isAbsolute(경로): 파일의 경로가 절대경로인지 상대경로인지를 true나 false로 알린다.
-- path.relative(기준경로, 비교경로): 경로를 두 개 넣으면 첫 번째 경로에서 두 번째 경로로 가는 방법을 알린다.
 - path.join(경로, …): 여러 인수를 넣으면 하나의 경로로 합친다. 상대경로인 ..(부모 디렉터리)과 .(현 위치)도 알아서 처리한다.
 - path.resolve(경로, …): path.join()과 비슷하지만 차이가 있다.
 
 ### 🤍 join과 resolve의 차이
 
 path.join과 path.resolve 메서드는 비슷해 보이지만 동작 방식이 다르다. /를 만나면 path.resolve는 절대경로로 인식해서 앞의 경로를 무시하고, path.join은 상대경로로 처리한다.
+
+### url
+> 인터넷 주소를 쉽게 조작하도록 도와주는 모듈
+
+- url.parse(주소) : 주소를 분해한다. username과 password 대신 auth 속성이 있고, searchParams 대신 query가 있다.
+- url.format(객체) : 분해되었던 url 객체를 다시 원래 상태로 조립
+
+search 부분은 보통 주소를 통해 데이터를 전달할 때 사용. search는 물음표(?)로 시작하고, 그 뒤에 키=값 형식으로 데이터를 전달한다. 여러 키가 있을 경우에는 &로 구분한다.
+
+```
+http://www.gilbut.co.kr/?page=3&limit=10&category=nodejs&category=javascript
+```
+와 같은 주소에서는 
+
+```
+?page=3&limit=10&category=nodejs&category=javascript 
+```
+부분이 search다
+
+### crypto
+>다양한 방식의 암호화를 도와주는 모듈이다. 회원가입 페이지 만들 때 필요하다!
+
+### util
+>util이라는 이름처럼 각종 편의 기능을 모아둔 모듈
