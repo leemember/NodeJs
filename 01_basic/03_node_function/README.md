@@ -215,3 +215,29 @@ http://www.gilbut.co.kr/?page=3&limit=10&category=nodejs&category=javascript
 
 ### util
 >util이라는 이름처럼 각종 편의 기능을 모아둔 모듈
+
+
+## 5. 파일 시스템 접근하기
+> fs모듈은 파일 시스템에 접근하는 모듈이다. 파일을 생성하거나 삭제하고 읽고 쓸 수 있다. 폴더도 만들거나 지울 수 있다. 
+
+[readme.txt]
+```
+저를 읽어주세요.
+```
+
+[[readme.txt]
+```
+const fs = require('fs');
+
+fs.readFile('./readme.txt', (err, data) => {
+  if (err) {
+    throw err;
+  }
+  console.log(data);
+  console.log(data.toString());
+});
+```
+>> 사람이 읽을 수 있는 형식으로 만들어준다. => toString을 사용해 문자열로 변환한다
+
+### 동기 메서드와 비동기 메서드
+> setTimeout 같은 타이머와 process.nextTick 외에도, 노드는 대부분의 메서드를 <b>비동기 방식으로 처리</b>합니다. 하지만 <b>몇몇 메서드는 동기 방식으로도 사용할 수 있습니다.</b> 특히 fs 모듈이 그러한 메서드를 많이 가지고 있습니다. 어떤 메서드가 동기 또는 비동기 방식으로 동작하는지와 언제 어떤 메서드를 사용해야 하는지를 알아보겠습니다.
