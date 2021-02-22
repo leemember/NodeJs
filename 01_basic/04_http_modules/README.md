@@ -259,7 +259,7 @@ http.createServer(async (req, res) => {
   });
 ```
 
-현재경로 - [restServer.js]가 핵심이다. 코드를 보면 req.method로 HTTP 요청 메서드를 구분하고 있다. 메서드가 GET이면 다시 req.url로 요청 주소를 구분한다. 주소가 /일 때는 restFront.html을 제공하고, 주소가 about이면 about.html 파일을 제공한다.
+현재경로 - [restServer.js]가 핵심이다.<br>코드를 보면 req.method로 HTTP 요청 메서드를 구분하고 있다. 메서드가 GET이면 다시 req.url로 요청 주소를 구분한다. 주소가 /일 때는 restFront.html을 제공하고, 주소가 about이면 about.html 파일을 제공한다.
 
 이외의 경우에는 주소에 적힌 파일을 제공한다. /restFront.js 라면 restFront.js 파일을 제공할 것이고, /restFront.css라면 restFront.css 파일을 제공할 것이다. 만약 존재하지 않는 파일을 요청했거나 GET 메서드 요청이 아닌 경우라면 🔥 404 에러가 응답으로 전송🔥된다. 응답 과정 중에 예기치 못한 에러가 발생할 경우에는 500 에러가 응답으로 전송된다.
 
